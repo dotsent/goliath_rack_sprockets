@@ -27,6 +27,9 @@ module Goliath
 
           # Build sprockets environment
           environment = ::Sprockets::Environment.new(@options[:root])
+          if @options.has_key?(:cache)
+            environment.cache = @options[:cache]
+          end
           @options[:asset_paths].each do |asset_path|
             environment.append_path asset_path
           end
